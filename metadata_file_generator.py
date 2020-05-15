@@ -60,9 +60,9 @@ class Ui_metadata_editor(object):
         self.actionClear_Table = QtGui.QAction(metadata_editor)
         self.actionClear_Table.setObjectName(_fromUtf8("actionClear_Table"))
         self.actionSave_to_csv = QtGui.QAction(metadata_editor)
-        self.actionSave_to_csv.setObjectName(_fromUtf8("actionSave_to_csv"))
+        self.actionSave_to_csv.setObjectName(_fromUtf8("actionSave_to_tsv"))
         self.actionOpen_csv_file = QtGui.QAction(metadata_editor)
-        self.actionOpen_csv_file.setObjectName(_fromUtf8("actionOpen_csv_file"))
+        self.actionOpen_csv_file.setObjectName(_fromUtf8("actionOpen_tsv_file"))
         self.menuFile.addAction(self.actionAdd_Files)
         self.menuFile.addAction(self.actionClear_Table)
         self.menuFile.addSeparator()
@@ -74,8 +74,8 @@ class Ui_metadata_editor(object):
 
         QtCore.QObject.connect(self.actionAdd_Files, QtCore.SIGNAL('triggered()'), self.get_files)
         QtCore.QObject.connect(self.actionClear_Table, QtCore.SIGNAL('triggered()'), self.clear_table)
-        QtCore.QObject.connect(self.actionSave_to_csv, QtCore.SIGNAL('triggered()'), self.save_csv)
-        QtCore.QObject.connect(self.actionOpen_csv_file, QtCore.SIGNAL('triggered()'), self.open_csv)
+        QtCore.QObject.connect(self.actionSave_to_csv, QtCore.SIGNAL('triggered()'), self.save_tsv)
+        QtCore.QObject.connect(self.actionOpen_csv_file, QtCore.SIGNAL('triggered()'), self.open_tsv)
         QtCore.QObject.connect(self.add_attribute, QtCore.SIGNAL('clicked()'), self.add_attribute_column)
         QtCore.QObject.connect(self.set_attribute, QtCore.SIGNAL('clicked()'), self.set_attributes)
 
@@ -93,7 +93,7 @@ class Ui_metadata_editor(object):
         self.table.setRowCount(0)
         self.table.setColumnCount(1)
 
-    def save_csv(self):
+    def save_tsv(self):
         output = QtGui.QFileDialog.getSaveFileName(None, 'Save File', 'C:\\')
         output = str(output).replace('/', '\\')
         headers = [str(self.table.horizontalHeaderItem(i).text())
@@ -108,13 +108,13 @@ class Ui_metadata_editor(object):
                 row.append(str(self.table.item(i, j).text()))
             data.append(row)
         df = pandas.DataFrame(data, columns=headers)
-        df.to_csv(path_or_buf=output + '.csv', index=False)
+        df.to_csv(path_or_buf=output + '.txt', sep='\t', index=False)
 
-    def open_csv(self):
+    def open_tsv(self):
         input_file = QtGui.QFileDialog.getOpenFileName(None, 'Open File', 'C:\\')
         input_file = str(input_file).replace('/', '\\')
         self.clear_table()
-        df = pandas.read_csv(input_file)
+        df = pandas.read_csv(input_file, sep='\t')
         if not df.empty:
             data = df.values.tolist()
             headers = list(df.columns)
@@ -153,8 +153,8 @@ class Ui_metadata_editor(object):
         self.menuFile.setTitle(_translate("metadata_editor", "File", None))
         self.actionAdd_Files.setText(_translate("metadata_editor", "Add Files...", None))
         self.actionClear_Table.setText(_translate("metadata_editor", "Clear Table...", None))
-        self.actionSave_to_csv.setText(_translate("metadata_editor", "Save to .csv...", None))
-        self.actionOpen_csv_file.setText(_translate("metadata_editor", "Open .csv file...", None))
+        self.actionSave_to_csv.setText(_translate("metadata_editor", "Save to .tsv...", None))
+        self.actionOpen_csv_file.setText(_translate("metadata_editor", "Open .tsv file...", None))
 
 
 def main():
