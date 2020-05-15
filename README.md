@@ -10,10 +10,10 @@ A simple tool to generate a metadata file intended to be used for feature based 
 
 ### Usage
 1. Run ```run_metadata_file_generator.bat``` to start the program.
-2. Use ```File > Add Files...``` to add the desired MS files used in your analysis. Alternatively, a .csv file previously made can be loaded by using ```File > Open .csv file...```.
+2. Use ```File > Add Files...``` to add the desired MS files used in your analysis. Alternatively, a tab separated file previously made can be loaded by using ```File > Open .tsv file...```.
 3. Add an attribute by clicking on ```Add Attribute```. A pop-up window will allow you to enter your attribute (i.e. 'condition', 'strain', etc).
 4. Highlight one or more rows and click on ```Set Attribute``` to set the attribute value for those rows. A pop-up window will allow you to select which attribute to add for those rows, and a second pop-up window will allow you to enter a value.
-5. Save your metadata file using ```File > Save to .csv...``` and selecting your desired output directory and filename.
+5. Save your metadata file using ```File > Save to .tsv...``` and selecting your desired output directory and filename.
 
 #### To Do List
 * Add function to delete rows from the table.
