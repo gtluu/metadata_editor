@@ -3,9 +3,7 @@
 A simple tool to generate a metadata file intended to be used for feature based molecular networking in GNPS.
 
 ## Easy Setup
-Download the files [here](https://mega.nz/file/Xow2mSrT#hM1Hwga1gYvFd2ccbiirvT3jA9zfuOGKWfSYm1pBLbE) and unzip. Alternatively, a single executable (.exe) version can be found [here](https://mega.nz/file/DxhWBCpT#LPWKc9YRbHDj9crepNqDVhFzFUa1sytK7RsKwfHLff0).
-* The single executable version has a much smaller file size but much slower startup time.
-* Both versions are portable.
+Download the file [here](https://github.com/gtluu/metadata_editor/releases).
 
 ## Advanced Version Setup
 1. Download the files in this repo and unzip.
@@ -19,7 +17,7 @@ Download the files [here](https://mega.nz/file/Xow2mSrT#hM1Hwga1gYvFd2ccbiirvT3j
 * pandas 1.0 or higher
 
 ## Usage
-1. Run ```run_metadata_file_generator.bat``` or ```metadata_file_generator.exe``` to start the program.
+1. Run ```run_metadata_file_generator.bat``` or ```metadata_editor.exe``` to start the program.
 2. Use ```File > Add Files...``` to add the desired MS files used in your analysis. Alternatively, a tab separated file previously made can be loaded by using ```File > Open .tsv file...```.
 3. Add an attribute by clicking on ```Add Attribute```. A pop-up window will allow you to enter your attribute (i.e. 'condition', 'strain', etc).
 4. Highlight one or more rows and click on ```Set Attribute``` to set the attribute value for those rows. A pop-up window will allow you to select which attribute to add for those rows, and a second pop-up window will allow you to enter a value.
